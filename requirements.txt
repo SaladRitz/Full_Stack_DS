@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+gradio
+boto3
+sentence-transformers
+scikit-learn
+polars
+pandas
+numpy
