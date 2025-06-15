@@ -31,7 +31,13 @@ To deploy the app on an EC2 instance, I launched an Ubuntu server (t2.medium or 
 
 Now if u go to http://<EC2_PUBLIC_IP>:8000, you will see {"message":"FastAPI is working!"} if everything works fine.
 
+(IMPORTANT) To run the app locally open a terminal in your project repo and run:
+uvicorn ml-engineer.app.main:app --reload --port 8000
+This starts the FAST API backend.
+Now open another terminal and run:
+python ml-engineer\frontend\gradio_ui.py
 
+OR simply run the gradio_ui.py in your vs code. And go to http://127.0.0.1:7860 to see Results.
 
 
 ![Image](https://github.com/user-attachments/assets/761f6335-ed1b-4b9d-9a96-2976d2bdb502)
