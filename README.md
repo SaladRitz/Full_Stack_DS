@@ -40,12 +40,25 @@ python ml-engineer\frontend\gradio_ui.py
 OR simply run the gradio_ui.py in your vs code. And go to http://127.0.0.1:7860 to see Results.
 
 
+
+
+## Semantic Search Results
+
+
+
+
 ![Image](https://github.com/user-attachments/assets/761f6335-ed1b-4b9d-9a96-2976d2bdb502)
 
 
 
 
 ![Image](https://github.com/user-attachments/assets/190e369e-c141-419d-a611-e960d4213f27)
+
+
+
+
+
+## Summarization Result
 
 
 
