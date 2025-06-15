@@ -1,11 +1,33 @@
-from fastapi import FastAPI
-import uvicorn
-from gradio_ui import build_gradio_ui
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from .utils import search_videos, summarize_transcript
 
 app = FastAPI()
 
-demo = build_gradio_ui()
-app = demo.launch(share=False, inline=True, prevent_thread_lock=True)
+class SearchRequest(BaseModel):
+    query: str
 
-if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="0.0.0.0", port=7860, reload=True)
+class SummarizeRequest(BaseModel):
+    video_id: str
+    title: str
+
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is working!"}
+
+
+@app.post("/search")
+def search(request: SearchRequest):
+    try:
+        results = search_videos(request.query)
+        return {"results": results}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/summarize")
+def summarize(request: SummarizeRequest):
+    try:
+        summary = summarize_transcript(request.video_id, request.title)
+        return {"summary": summary}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

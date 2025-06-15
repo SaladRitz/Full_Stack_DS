@@ -7,3 +7,4 @@ scikit-learn
 polars
 pandas
 numpy
+youtube_transcript_api
